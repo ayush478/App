@@ -11,7 +11,9 @@ class _SignInState extends State<SignIn> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
-    )
+      appBar: AppBar(
+        title: Text("Chat App"),
+      ),
+    );
   }
 }
