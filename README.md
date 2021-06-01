@@ -17,15 +17,17 @@
   </p>
 </p>
 
-## Table of contents
+<h4 align="center"> 
+	 Status: Finished
+</h4>
 
-- [Quick start](#quick-start)
-- [App Features:](#App-Features:)
-- [Creators](#creators)
-
-## Quick start
-
-This is a flutter Chat app. You should follow the instructions in the [official documentation](https://flutter.io/docs/get-started/install).
+<p align="center">
+ <a href="#app-feartures">App Features</a> •
+ <a href="#screenshots">Screenshots</a> • 
+ <a href="#quick-start">Quick start</a> •
+ <a href="#creators">Creators</a> • 
+</p>
+---
 
 ## App Features:
 
@@ -33,9 +35,32 @@ This is a flutter Chat app. You should follow the instructions in the [official 
 * Search user via username
 * Send user message real time (it’s better)
 
+---
+
+## Screenshots:
+
+<p align="center">
+  <img alt="cases" src="https://github.com/ayush478/Chat_App/blob/master/Screenshots/1.png">
+</p>
+
+<p align="center">
+  <img alt="cases" src="https://github.com/ayush478/Chat_App/blob/master/Screenshots/2.png">
+</p>
+
+
+---
+
+## Quick start
+
+This is a flutter Chat app. You should follow the instructions in the [official documentation](https://flutter.io/docs/get-started/install).
+
+---
+
 ### Firebase
 
 This Project is using Firebase. We use Cloud Firestore and Cloud Storage to store users and their messages.
+
+---
 
 
 ## Creators
@@ -44,7 +69,7 @@ This Project is using Firebase. We use Cloud Firestore and Cloud Storage to stor
 
 - <https://github.com/ayush478>
 
-
+---
 
 A few resources to get you started if this is your first Flutter project:
 
