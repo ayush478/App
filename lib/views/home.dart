@@ -1,7 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:todo_list/helperfunctions/sharedpref_helper.dart';
 import 'package:todo_list/services/auth.dart';
 import 'package:todo_list/services/database.dart';
+import 'package:todo_list/views/chatscreen.dart';
 import 'package:todo_list/views/signin.dart';
 
 class Home extends StatefulWidget {
@@ -18,6 +20,22 @@ class _HomeState extends State<Home> {
 
   TextEditingController searchUsernameEditingController =
       TextEditingController();
+
+  getMyInfoFromSharedPreference() async {
+    myName = await SharedPreferenceHelper().getDisplayName();
+    myProfilePic = await SharedPreferenceHelper().getUserProfileUrl();
+    myUserName = await SharedPreferenceHelper().getUserName();
+    myEmail = await SharedPreferenceHelper().getUserEmail();
+  }
+
+  getChatRoomIdByUsernames(String a, String b) {
+    if (a.substring(0, 1).codeUnitAt(0) > b.substring(0, 1).codeUnitAt(0)) {
+      return "$b\_$a";
+    } else {
+      return "$a\_$b";
+    }
+  }
+
   onSearchBtnClick() async {
     isSearching = true;
     setState(() {});
@@ -25,6 +43,45 @@ class _HomeState extends State<Home> {
         .getUserByUserName(searchUsernameEditingController.text);
 
     setState(() {});
+  }
+
+  Widget chatRoomsList() {
+    return Container();
+  }
+
+  Widget searchListUserTile({String profileUrl, username, name, email}) {
+    return GestureDetector(
+      onTap: () {
+        var chatRoomId = getChatRoomIdByUsernames(myUserName, username);
+        Map<String, dynamic> chatRoomInfoMap = {
+          "users": [myUserName, username]
+        };
+        DatabaseMethods().createChatRoom(chatRoomId, chatRoomInfoMap);
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => ChatScreen(username, name)));
+      },
+      child: Container(
+        margin: EdgeInsets.symmetric(vertical: 8),
+        child: Row(
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(40),
+              child: Image.network(
+                profileUrl,
+                height: 40,
+                width: 40,
+              ),
+            ),
+            SizedBox(width: 12),
+            Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [Text(name), Text(email)])
+          ],
+        ),
+      ),
+    );
   }
 
   Widget searchUsersList() {
@@ -37,7 +94,11 @@ class _HomeState extends State<Home> {
                 shrinkWrap: true,
                 itemBuilder: (context, index) {
                   DocumentSnapshot ds = snapshot.data.docs[index];
-                  return Image.network("imgurl")
+                  return searchListUserTile(
+                      profileUrl: ds["imgUrl"],
+                      name: ds["name"],
+                      email: ds["email"],
+                      username: ds["username"]);
                 },
               )
             : Center(
@@ -45,6 +106,22 @@ class _HomeState extends State<Home> {
               );
       },
     );
+  }
+
+  getChatRooms() async {
+    chatRoomsStream = await DatabaseMethods().getChatRooms();
+    setState(() {});
+  }
+
+  onScreenLoaded() async {
+    await getMyInfoFromSharedPreference();
+    getChatRooms();
+  }
+
+  @override
+  void initState() {
+    onScreenLoaded();
+    super.initState();
   }
 
   @override
@@ -119,7 +196,7 @@ class _HomeState extends State<Home> {
                 ),
               ],
             ),
-            searchUsersList()
+            isSearching ? searchUsersList() : chatRoomsList()
           ],
         ),
       ),
