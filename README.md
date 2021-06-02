@@ -33,7 +33,7 @@
 
 * Sign in with Google
 * Search user via username
-* Send user message real time (it’s better)
+* Send user message real time 
 
 ---
 
