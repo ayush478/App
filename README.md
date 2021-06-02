@@ -1,4 +1,4 @@
-<p align="center">
+<!-- <p align="center">
   <a href="https://flutter.io/">
     <img src="https://diegolaballos.com/files/images/flutter-icon.jpg" alt="Logo" width=72 height=72>
   </a>
@@ -37,7 +37,7 @@
 
 ---
 
-<!-- ## Screenshots:
+## Screenshots:
 
 <p align="center">
   <img alt="cases" src="https://github.com/ayush478/Chat_App/blob/master/Screenshots/1.png" width="300" height="550">
@@ -46,7 +46,7 @@
 <p align="center">
   <img alt="cases" src="https://github.com/ayush478/Chat_App/blob/master/Screenshots/2.png" width="300" height="550">
 </p>
- -->
+
 
 ---
 
@@ -79,3 +79,4 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter, view our
 [online documentation](https://flutter.dev/docs), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+ -->
