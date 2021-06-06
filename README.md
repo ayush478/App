@@ -40,9 +40,9 @@
 ## Screenshots:
 
 <p align="center">
-  <img alt="cases" src="https://github.com/ayush478/Chat_App/blob/master/Screenshots/1.png" width="300" height="550">
-	 <img alt="cases" src="https://github.com/ayush478/Chat_App/blob/master/Screenshots/2.png" width="300" height="550">
-     <img alt="cases" src="https://github.com/ayush478/Chat_App/blob/master/Screenshots/3.png" width="300" height="550">
+  <img alt="cases" src="https://github.com/ayush478/babble/blob/master/Screenshots/1.png" width="300" height="550">
+ <img alt="cases" src="https://github.com/ayush478/babble/blob/master/Screenshots/2.png" width="300" height="550">
+     <img alt="cases" src="https://github.com/ayush478/babble/blob/master/Screenshots/3.png" width="300" height="550">
 </p>
 
 
