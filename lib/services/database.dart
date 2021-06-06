@@ -1,5 +1,5 @@
+import 'package:babble/helperfunctions/sharedpref_helper.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:todo_list/helperfunctions/sharedpref_helper.dart';
 
 class DatabaseMethods {
   Future addUserInfoToDB(

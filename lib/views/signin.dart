@@ -1,5 +1,5 @@
+import 'package:babble/services/auth.dart';
 import 'package:flutter/material.dart';
-import 'package:todo_list/services/auth.dart';
 
 class SignIn extends StatefulWidget {
   SignIn({Key key}) : super(key: key);
@@ -12,23 +12,20 @@ class _SignInState extends State<SignIn> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xFFf9dfdc),
       appBar: AppBar(
-        title: Text("Messenger Clone"),
+        title: Text("chat app"),
       ),
       body: Center(
         child: GestureDetector(
           onTap: () {
             AuthMethods().signInWithGoogle(context);
           },
-          child: Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(24),
-              color: Color(0xffDB4437),
-            ),
-            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-            child: Text(
-              "Sign In with Google",
-              style: TextStyle(fontSize: 16, color: Colors.white),
+          child: ClipRect(
+            child: Image.asset(
+              "Screenshots/google.png",
+              height: 50,
+              width: 50,
             ),
           ),
         ),

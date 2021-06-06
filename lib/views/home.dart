@@ -1,10 +1,11 @@
+import 'package:babble/helperfunctions/sharedpref_helper.dart';
+import 'package:babble/services/auth.dart';
+import 'package:babble/services/database.dart';
+import 'package:babble/views/chatscreen.dart';
+import 'package:babble/views/signin.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:todo_list/helperfunctions/sharedpref_helper.dart';
-import 'package:todo_list/services/auth.dart';
-import 'package:todo_list/services/database.dart';
-import 'package:todo_list/views/chatscreen.dart';
-import 'package:todo_list/views/signin.dart';
 
 class Home extends StatefulWidget {
   Home({Key key}) : super(key: key);
@@ -226,7 +227,7 @@ class ChatRoomListTile extends StatefulWidget {
 }
 
 class _ChatRoomListTileState extends State<ChatRoomListTile> {
-  String profilePicUrl = "", name = "", username = "";
+  String profilePicUrl, name = "", username = "";
 
   getThisUserInfo() async {
     username =
@@ -247,6 +248,7 @@ class _ChatRoomListTileState extends State<ChatRoomListTile> {
 
   @override
   Widget build(BuildContext context) {
+    print(profilePicUrl);
     return GestureDetector(
       onTap: () {
         Navigator.push(
@@ -258,12 +260,16 @@ class _ChatRoomListTileState extends State<ChatRoomListTile> {
         margin: EdgeInsets.symmetric(vertical: 8),
         child: Row(
           children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(30),
-              child: Image.network(
-                profilePicUrl,
-                height: 40,
-                width: 40,
+            Flexible(
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(50),
+                child: CachedNetworkImage(
+                  height: 50,
+                  width: 50,
+                  imageUrl: profilePicUrl,
+                  placeholder: (context, url) => CircularProgressIndicator(),
+                  errorWidget: (context, url, error) => Icon(Icons.error),
+                ),
               ),
             ),
             SizedBox(width: 12),

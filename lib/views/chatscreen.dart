@@ -1,8 +1,8 @@
+import 'package:babble/helperfunctions/sharedpref_helper.dart';
+import 'package:babble/services/database.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:random_string/random_string.dart';
-import 'package:todo_list/helperfunctions/sharedpref_helper.dart';
-import 'package:todo_list/services/database.dart';
 
 class ChatScreen extends StatefulWidget {
   final String chatWithUsername, name;
@@ -91,7 +91,7 @@ class _ChatScreenState extends State<ChatScreen> {
                   bottomLeft:
                       sendByMe ? Radius.circular(24) : Radius.circular(0),
                 ),
-                color: sendByMe ? Colors.blue : Color(0xfff1f0f0),
+                color: sendByMe ? Colors.blue : Colors.amber,
               ),
               padding: EdgeInsets.all(16),
               child: Text(
@@ -150,34 +150,41 @@ class _ChatScreenState extends State<ChatScreen> {
             chatMessages(),
             Container(
               alignment: Alignment.bottomCenter,
-              child: Container(
-                color: Colors.grey.withOpacity(0.8),
-                padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                child: Row(
-                  children: [
-                    Expanded(
-                        child: TextField(
-                      controller: messageTextEdittingController,
-                      onChanged: (value) {
-                        addMessage(false);
-                      },
-                      style: TextStyle(color: Colors.white),
-                      decoration: InputDecoration(
-                          border: InputBorder.none,
-                          hintText: "type a message",
-                          hintStyle:
-                              TextStyle(color: Colors.white.withOpacity(0.6))),
-                    )),
-                    GestureDetector(
-                      onTap: () {
-                        addMessage(true);
-                      },
-                      child: Icon(
-                        Icons.send,
-                        color: Colors.white,
-                      ),
-                    )
-                  ],
+              child: Padding(
+                padding:
+                    const EdgeInsets.only(bottom: 10.0, left: 12, right: 12),
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(50),
+                    color: Color(0xffcee5d0),
+                  ),
+                  padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                  child: Row(
+                    children: [
+                      Expanded(
+                          child: TextField(
+                        controller: messageTextEdittingController,
+                        onChanged: (value) {
+                          addMessage(false);
+                        },
+                        style: TextStyle(color: Colors.black),
+                        decoration: InputDecoration(
+                            border: InputBorder.none,
+                            hintText: "Type a message",
+                            hintStyle: TextStyle(
+                                color: Colors.black.withOpacity(0.6))),
+                      )),
+                      GestureDetector(
+                        onTap: () {
+                          addMessage(true);
+                        },
+                        child: Icon(
+                          Icons.send,
+                          color: Colors.white,
+                        ),
+                      )
+                    ],
+                  ),
                 ),
               ),
             )

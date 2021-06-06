@@ -1,9 +1,10 @@
+import 'package:babble/helperfunctions/sharedpref_helper.dart';
+import 'package:babble/services/database.dart';
+import 'package:babble/views/home.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:todo_list/helperfunctions/sharedpref_helper.dart';
-import 'package:todo_list/services/database.dart';
-import 'package:todo_list/views/home.dart';
+
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthMethods {

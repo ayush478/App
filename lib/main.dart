@@ -1,8 +1,8 @@
+import 'package:babble/services/auth.dart';
+import 'package:babble/views/home.dart';
+import 'package:babble/views/signin.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:todo_list/services/auth.dart';
-import 'package:todo_list/views/home.dart';
-import 'package:todo_list/views/signin.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -16,8 +16,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: "ChatApp",
       theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+          primarySwatch: Colors.purple,
+          appBarTheme: AppBarTheme(backgroundColor: Color(0xFFf4c7ab))),
       debugShowCheckedModeBanner: false,
       home: FutureBuilder(
           future: AuthMethods().getCurrentUser(),
